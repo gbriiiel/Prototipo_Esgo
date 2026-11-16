@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ESGO — Dados que transformam a gestão</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="bar"><div class="logo">ESG<i></i></div>
+<nav id="nav"></nav></div></header>
+<main>
+
+<section id="inicio">
+<div class="hero">
+<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"><path d="M50 50 50 4M50 50 82 18M50 50 96 50M50 50 82 82M50 50 50 96M50 50 18 82M50 50 4 50M50 50 18 18"/></svg>
+<h1>Veja o problema antes que ele vire prejuízo.</h1>
+<p>O ESGO transforma faltas, rotatividade, acidentes, desperdícios e satisfação em indicadores simples. Você registra os dados da rotina, o painel mostra o que pede atenção e você age.</p>
+<div class="row"><button class="btn" data-go="empresa">Começar agora</button><button class="btn alt" id="demo">Ver com dados de exemplo</button></div>
+</div>
+<div class="stats">
+<div class="stat"><b>81%</b>dos 3.623 gestores ouvidos pelo Sebrae tinham pouca familiaridade com ESG</div>
+<div class="stat"><b>1/3</b>dos empreendedores já sentiu pressão para adotar práticas ESG</div>
+<div class="stat"><b>25%</b>das 100 PMEs paulistas da FecomercioSP conheciam pouco o tema</div>
+</div>
+<h2>Como funciona</h2>
+<div class="flow">
+<div><h3>1. Cadastrar</h3><span class="mut">Perfil da empresa e porte.</span></div>
+<div><h3>2. Registrar</h3><span class="mut">Dados do mês, em poucos campos.</span></div>
+<div><h3>3. Visualizar</h3><span class="mut">Painel com semáforo e alertas.</span></div>
+<div><h3>4. Agir</h3><span class="mut">Plano de ações com acompanhamento.</span></div>
+</div>
+<p class="mut">Sustentabilidade não é só meio ambiente. O ESGO acompanha as três dimensões: Ambiental (E), Social (S) e Governança (G).</p>
+</section>
+
+<section id="empresa" hidden>
+<h2>Cadastre sua empresa</h2><p class="mut">Esses dados servem para calcular os indicadores. Ficam salvos apenas neste navegador.</p>
+<div class="card"><div class="grid">
+<label>Nome da empresa<input id="cNome" placeholder="Ex.: Padaria Boa Massa"></label>
+<label>Setor<select id="cSetor"><option>Comércio</option><option>Serviços</option><option>Indústria</option><option>Alimentação</option></select></label>
+<label>Nº de funcionários<input id="cFunc" type="number" min="1" value="10"></label>
+</div><div class="row"><button class="btn" id="salvarEmp">Salvar e registrar dados</button></div></div>
+</section>
+
+<section id="registrar" hidden>
+<h2>Registre os dados do mês</h2><p class="mut">Preencha o que tiver. Quanto mais regular o registro, mais útil o painel.</p>
+<div class="card">
+<h3>Geral</h3><div class="grid">
+<label>Mês<input id="rMes" type="month"></label>
+<label>Funcionários no mês<input id="rFunc" type="number" min="1"></label></div>
+<h3 style="margin-top:18px">Social (S)</h3><div class="grid">
+<label>Dias de falta (total)<small>soma de todos</small><input id="rFalt" type="number" min="0"></label>
+<label>Desligamentos<small>quem saiu no mês</small><input id="rDesl" type="number" min="0"></label>
+<label>Acidentes de trabalho<input id="rAcid" type="number" min="0"></label>
+<label>Satisfação (0 a 10)<small>média de pesquisa rápida</small><input id="rSat" type="number" min="0" max="10" step="0.1"></label></div>
+<h3 style="margin-top:18px">Ambiental (E)</h3><div class="grid">
+<label>Água (m³)<input id="rAgua" type="number" min="0" step="0.1"></label>
+<label>Energia (kWh)<input id="rEner" type="number" min="0"></label>
+<label>Resíduos (kg)<input id="rRes" type="number" min="0"></label></div>
+<h3 style="margin-top:18px">Governança (G)</h3><div class="grid">
+<label>Metas cumpridas (%)<small>das metas definidas no mês</small><input id="rMeta" type="number" min="0" max="100"></label>
+<label>Processos documentados (%)<input id="rProc" type="number" min="0" max="100"></label></div>
+<div class="row"><button class="btn" id="salvarReg">Salvar registro</button><span id="regMsg" class="mut" role="status" style="align-self:center"></span></div>
+</div>
+<div class="card scroll"><h3>Registros salvos</h3><div id="lista"></div></div>
+</section>
+
+<section id="painel" hidden>
+<h2 id="pTitulo">Painel</h2><div id="pBody"></div>
+</section>
+
+<section id="dashboard" hidden>
+<h2 id="dTitulo">Dashboard</h2><p class="mut">Visão geral para acompanhar a evolução da empresa ao longo dos meses.</p><div id="dBody"></div>
+</section>
+
+<section id="acoes" hidden>
+<h2>Plano de ação</h2><p class="mut">Medir não basta: é preciso agir. Adicione ações a partir dos alertas ou crie as suas.</p>
+<div class="card"><div class="row" style="margin:0"><input id="aTxt" placeholder="Ex.: Conversar com a equipe sobre as faltas" style="flex:1 1 260px;margin:0"><button class="btn" id="aAdd">Adicionar ação</button></div></div>
+<div class="card" id="aLista"></div>
+<div id="sug"></div>
+</section>
+</main>
+<footer>ESGO · Projeto Senac, Turma 134ª · Protótipo educacional: os limites do semáforo são referências gerais e devem ser ajustados ao seu setor. Fontes de contexto: Sebrae e FecomercioSP.</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
